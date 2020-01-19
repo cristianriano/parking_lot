@@ -9,7 +9,7 @@ module Serializers
        attribute(attr_name, options) do
          value = block_given? ? instance_eval(&block) : @object.public_send(attr_name)
          if value.is_a?(Time)
-           Time.to_i * 1000
+           value.to_i * 1000
          else
            value
          end
