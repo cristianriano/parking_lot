@@ -17,6 +17,10 @@ require 'types'
 require 'errors'
 require 'app'
 
+Dir["config/initializers/**/*.rb"].sort.each do |filename|
+  require filename
+end
+
 # Require use_cases, helpers and models
 Dir.glob('./app/{use_cases,helpers,models,repositories}/**/*.rb')
    .each { |file| require file }

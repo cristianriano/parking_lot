@@ -6,6 +6,9 @@ require File.expand_path('../config/environment.rb', __dir__)
 
 require 'rack/test'
 require 'factory_bot'
+require 'timecop'
+require 'approvals'
+require 'approvals/rspec'
 
 Dir[File.join("spec/support/**/*.rb")].each { |file| require file }
 
@@ -37,6 +40,13 @@ RSpec.configure do |config|
 
   config.order = :random
   Kernel.srand config.seed
+
+  config.approvals_default_format = :json
+  config.diff_on_approval_failure = true
+
+  Approvals.configure do |c|
+    c.approvals_path = 'spec/fixtures/approvals/'
+  end
 
   config.before(:example, clear_tickets: true) do
     Repositories::Ticket.clear
