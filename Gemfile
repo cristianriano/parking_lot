@@ -20,6 +20,9 @@ gem 'dry-initializer', '~> 3.0'
 gem 'dry-struct', '~> 1.2'
 gem 'dry-types', '~> 1.0'
 
+# Serializer
+gem 'jsonapi-rb', '~> 0.5'
+
 group :test, :development do
   gem 'factory_bot', '~> 5.1'
   gem 'rubocop', '~> 0.76', require: false
