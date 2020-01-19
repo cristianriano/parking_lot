@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 
-RSpec.describe CheckController do
+RSpec.describe 'Check endpoint' do
   include Rack::Test::Methods
 
   it 'returns OK' do
-    get '/'
+    get '/check'
 
     expect(last_response.status).to eq 200
     expect(last_response.body).to eq 'OK'

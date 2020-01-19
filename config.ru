@@ -2,4 +2,6 @@
 
 require File.expand_path('config/environment', __dir__)
 
-map('/check') { run CheckController }
+mapping = { "/" => Sinatra::App }
+
+run Rack::URLMap.new(mapping)

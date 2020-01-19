@@ -33,6 +33,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   def app
-    described_class
+    Sinatra::App
   end
 end
