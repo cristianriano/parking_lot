@@ -12,6 +12,7 @@ $LOAD_PATH.unshift(File.expand_path("..", __dir__))
 $LOAD_PATH.unshift(File.expand_path('../app', __dir__))
 
 require 'sinatra/base'
+require 'sinatra/namespace'
 require 'types'
 require 'errors'
 require 'app'

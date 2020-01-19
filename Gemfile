@@ -7,6 +7,7 @@ gem 'puma', '~> 4.3'
 gem 'rake', '~> 13.0'
 gem 'racksh', '~> 1.0'
 gem 'sinatra', '~> 2.0'
+gem 'sinatra-contrib', '~> 2.0'
 
 # Configuration
 gem 'dotenv', '~> 2.7'

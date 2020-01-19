@@ -2,13 +2,16 @@
 
 require 'helpers/application_helper'
 require 'check'
+require 'api/api'
 
 # Setup Sinatra API
 module Sinatra
   class App < Base
     helpers ApplicationHelper
 
+    register Namespace
     register Check
+    register Api
 
     configure :production do
       enable :logging
