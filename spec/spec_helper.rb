@@ -5,10 +5,16 @@ ENV['ENVIRONMENT'] ||= 'test'
 require File.expand_path('../config/environment.rb', __dir__)
 
 require 'rack/test'
+require 'factory_bot'
+
+Dir[File.join("spec/support/**/*.rb")].each { |file| require file }
+
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  config.expose_dsl_globally = true
+  config.include FactoryBot::Syntax::Methods
 
+  config.expose_dsl_globally = true
   config.expect_with :rspec do |c|
     c.include_chain_clauses_in_custom_matcher_descriptions = true
     c.syntax = :expect
@@ -31,6 +37,10 @@ RSpec.configure do |config|
 
   config.order = :random
   Kernel.srand config.seed
+
+  config.before(:example, clear_tickets: true) do
+    Repositories::Ticket.clear
+  end
 
   def app
     Sinatra::App

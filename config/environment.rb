@@ -8,11 +8,14 @@ require 'bundler'
 require 'dotenv'
 Dotenv.load "./config/.env.#{ENV['ENVIRONMENT']}"
 
+$LOAD_PATH.unshift(File.expand_path("..", __dir__))
 $LOAD_PATH.unshift(File.expand_path('../app', __dir__))
 
 require 'sinatra/base'
+require 'types'
+require 'errors'
 require 'app'
 
 # Require use_cases, helpers and models
-Dir.glob('./app/{helpers}/**/*.rb')
+Dir.glob('./app/{use_cases,helpers,models,repositories}/**/*.rb')
    .each { |file| require file }
