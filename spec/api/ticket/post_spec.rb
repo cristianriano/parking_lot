@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'POST /api/ticket', :clear_tickets do
+RSpec.describe 'POST /api/ticket', :clear_tickets, :with_frozen_time do
   include Rack::Test::Methods
 
   subject { post '/api/tickets', {}, headers }

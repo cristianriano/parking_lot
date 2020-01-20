@@ -10,7 +10,7 @@ require 'timecop'
 require 'approvals'
 require 'approvals/rspec'
 
-Dir[File.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[File.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 FactoryBot.find_definitions
 
@@ -50,6 +50,11 @@ RSpec.configure do |config|
 
   config.before(:example, clear_tickets: true) do
     Repositories::Ticket.clear
+  end
+  config.around(:example, with_frozen_time: true) do |ex|
+    Timecop.freeze(frozen_time)
+    ex.run
+    Timecop.return
   end
 
   def app

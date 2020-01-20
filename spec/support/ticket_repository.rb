@@ -5,6 +5,7 @@ module Repositories
     class << self
       def clear
         return unless %w[test development].include? ENV['ENVIRONMENT']
+
         conn.truncate
       end
 

@@ -1,0 +1,14 @@
+Style/Documentation:
+  Exclude:
+    - app/**/*
+    - Rakefile
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+    - spec/**/*
+
+Lint/NestedMethodDefinition:
+  Exclude:
+    - app/api/**/*

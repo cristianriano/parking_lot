@@ -2,7 +2,7 @@
 
 module UseCases
   module Tickets
-    class Create
+    class Create < Base
       def call
         store_ticket(build_ticket)
       end
