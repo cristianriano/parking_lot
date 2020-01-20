@@ -24,11 +24,19 @@ module Sinatra
 
       enable :logging
       enable :raise_errors
-      enable :show_exceptions
+      disable :show_exceptions
     end
 
     before do
       content_type :json
+    end
+
+    error ::Errors::NotFound do |e|
+      halt 404, e.message
+    end
+
+    error Dry::Types::ConstraintError do |e|
+      halt 400, e.message
     end
   end
 end

@@ -14,7 +14,8 @@ module Repositories
 
       def find(id)
         row = conn.where(id: id).limit(1).first
-        raise Errors::NotFound.new(id) unless row
+        raise Errors::NotFound, id unless row
+
         Models::Ticket.new(row)
       end
 

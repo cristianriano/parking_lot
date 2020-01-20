@@ -51,6 +51,11 @@ RSpec.configure do |config|
   config.before(:example, clear_tickets: true) do
     Repositories::Ticket.clear
   end
+  config.around(:example, with_frozen_time: true) do |ex|
+    Timecop.freeze(frozen_time)
+    ex.run
+    Timecop.return
+  end
 
   def app
     Sinatra::App

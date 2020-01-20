@@ -23,12 +23,10 @@ RSpec.describe Repositories::Ticket, :clear_tickets do
     end
   end
 
-  describe '.find' do
+  describe '.find', :with_frozen_time do
     subject { described_class.find(id) }
 
-    before { Timecop.freeze(Time.new(2019, 12, 31)) }
-    after { Timecop.return }
-
+    let(:frozen_time) { Time.new(2019, 12, 31) }
     let(:id) { SecureRandom.hex(8) }
 
     context 'when the id does not exists' do

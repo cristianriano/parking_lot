@@ -8,3 +8,7 @@ Metrics/BlockLength:
   Exclude:
     - Rakefile
     - spec/**/*
+
+Lint/NestedMethodDefinition:
+  Exclude:
+    - app/api/**/*
