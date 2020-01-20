@@ -10,7 +10,7 @@ require 'timecop'
 require 'approvals'
 require 'approvals/rspec'
 
-Dir[File.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[File.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 FactoryBot.find_definitions
 

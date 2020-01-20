@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "models/ticket"
+require 'models/ticket'
 
 FactoryBot.define do
   factory :ticket, class: Models::Ticket do

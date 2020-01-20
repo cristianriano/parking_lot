@@ -8,7 +8,7 @@ module Sinatra
       }.freeze
 
       def self.registered(app)
-        app.post "/tickets" do
+        app.post '/tickets' do
           ticket = UseCases::Tickets::Create.new.call
 
           MultiJson.dump(renderer.render(ticket, class: SERIALIZER_MAPPING))

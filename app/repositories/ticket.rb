@@ -9,7 +9,7 @@ module Repositories
         conn.insert(ticket.to_h)
         ticket
       rescue Sequel::UniqueConstraintViolation
-        raise Errors::EntityAlreadyExists.new("ticket #{ticket.id}")
+        raise Errors::EntityAlreadyExists, "ticket #{ticket.id}"
       end
 
       private

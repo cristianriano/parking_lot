@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 # Framework and server related
 gem 'puma', '~> 4.3'
-gem 'rake', '~> 13.0'
 gem 'racksh', '~> 1.0'
+gem 'rake', '~> 13.0'
 gem 'sinatra', '~> 2.0'
 gem 'sinatra-contrib', '~> 2.0'
 
@@ -13,8 +13,8 @@ gem 'sinatra-contrib', '~> 2.0'
 gem 'dotenv', '~> 2.7'
 
 # Database
-gem 'sequel', '~> 5.28'
 gem 'mysql2'
+gem 'sequel', '~> 5.28'
 
 # Validation
 gem 'dry-initializer', '~> 3.0'

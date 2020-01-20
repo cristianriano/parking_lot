@@ -3,8 +3,8 @@
 module Sinatra
   module Check
     def self.registered(app)
-      app.get "/check" do
-        "OK"
+      app.get '/check' do
+        'OK'
       end
     end
   end

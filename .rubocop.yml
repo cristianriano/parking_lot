@@ -1,0 +1,10 @@
+Style/Documentation:
+  Exclude:
+    - app/**/*
+    - Rakefile
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - Rakefile
+    - spec/**/*
