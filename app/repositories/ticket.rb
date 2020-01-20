@@ -12,6 +12,12 @@ module Repositories
         raise Errors::EntityAlreadyExists, "ticket #{ticket.id}"
       end
 
+      def find(id)
+        row = conn.where(id: id).limit(1).first
+        raise Errors::NotFound.new(id) unless row
+        Models::Ticket.new(row)
+      end
+
       private
 
       def conn

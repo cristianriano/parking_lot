@@ -22,4 +22,31 @@ RSpec.describe Repositories::Ticket, :clear_tickets do
       end
     end
   end
+
+  describe '.find' do
+    subject { described_class.find(id) }
+
+    before { Timecop.freeze(Time.new(2019, 12, 31)) }
+    after { Timecop.return }
+
+    let(:id) { SecureRandom.hex(8) }
+
+    context 'when the id does not exists' do
+      it 'raises NotFound error' do
+        expect { subject }.to raise_error(Errors::NotFound)
+      end
+    end
+
+    context 'when the id exists' do
+      before { described_class.insert(ticket) }
+
+      let(:ticket) { FactoryBot.build(:ticket, id: id) }
+
+      it 'returns the ticket' do
+        expect(subject).to be_instance_of(Models::Ticket)
+        expect(subject.id).to eq ticket.id
+        expect(subject.created_at).to eq ticket.created_at
+      end
+    end
+  end
 end

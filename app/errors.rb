@@ -2,4 +2,5 @@
 
 module Errors
   class EntityAlreadyExists < StandardError; end
+  class NotFound < StandardError; end
 end
