@@ -51,6 +51,10 @@ RSpec.configure do |config|
   config.before(:example, clear_tickets: true) do
     Repositories::Ticket.clear
   end
+  config.before(:example, clear_db: true) do
+    Repositories::Payment.clear
+    Repositories::Ticket.clear
+  end
   config.around(:example, with_frozen_time: true) do |ex|
     Timecop.freeze(frozen_time)
     ex.run

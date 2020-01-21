@@ -35,7 +35,7 @@ module Sinatra
       halt 404, e.message
     end
 
-    error Dry::Types::ConstraintError do |e|
+    error Dry::Types::ConstraintError, JSON::ParserError, Dry::Struct::Error do |e|
       halt 400, e.message
     end
   end
