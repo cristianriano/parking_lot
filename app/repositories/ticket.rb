@@ -23,7 +23,7 @@ module Repositories
       def update(id:, changeset:)
         ensure_present!(changeset)
 
-        changeset[:updated_at] = Time.now.utc
+        changeset[:updated_at] = Time.now
         ticket = find(id)
         conn.filter(id: id).update(**changeset)
         find(id)

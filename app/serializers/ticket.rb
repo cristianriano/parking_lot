@@ -9,6 +9,6 @@ module Serializers
     type 'ticket'
 
     attribute_timestamp :created_at
-    attribute :price, if: -> { @object.price.nonzero? }
+    attribute :price, if: -> { @object.price && @object.price.nonzero? }
   end
 end

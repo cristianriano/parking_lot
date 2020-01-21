@@ -16,7 +16,7 @@ RSpec.describe 'POST /api/ticket/:id/payments', :clear_db, :with_frozen_time do
     }.to_json
   end
   let(:headers) { {} }
-  let(:frozen_time) { Time.utc(2019, 12, 31) }
+  let(:frozen_time) { Time.new(2019, 12, 31, 10) }
 
   let(:id) { '5b192f70a7ab640d' }
   let(:method) { 'cash' }
@@ -57,6 +57,19 @@ RSpec.describe 'POST /api/ticket/:id/payments', :clear_db, :with_frozen_time do
       expect { subject }
         .to change { Repositories::Ticket.find(id).state }
         .from('open').to('paid')
+    end
+
+    let(:fetch_price) do
+      proc do
+        body = get("api/tickets/#{id}").body
+        JSON.parse(body).dig("data", "attributes", "price")
+      end
+    end
+
+    it 'returns 0 when displaying the ticket' do
+      Timecop.freeze(frozen_time + 3000) do
+        expect { subject }.to change { fetch_price.call }.from(2).to(nil)
+      end
     end
 
     context 'when the payment method is not valid' do

@@ -18,7 +18,7 @@ module UseCases
         def build_payment
           Models::Payment.new(
             id: SecureRandom.uuid,
-            payed_at: Time.now.utc,
+            payed_at: Time.now,
             method: extract_payment_method,
             ticket_id: ticket.id
           )

@@ -18,9 +18,13 @@ RSpec.describe UseCases::Tickets::Show do
 
     let(:repo) { Repositories::Ticket }
     let(:id) { 'fbbe784a1f67df8e' }
+    let(:ticket) { FactoryBot.build(:ticket, id: id) }
 
     it 'calls the repo with correct params' do
-      expect(repo).to receive(:find).with(id)
+      expect(repo).to receive(:find).with(id).and_return(ticket)
+      expect(UseCases::Tickets::CalculatePrice)
+        .to receive(:new).with(ticket)
+        .and_call_original
       subject
     end
   end
