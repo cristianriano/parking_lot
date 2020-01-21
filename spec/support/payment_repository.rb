@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Repositories
-  class Ticket
+  class Payment
     class << self
       def clear
         return unless %w[test development].include? ENV['ENVIRONMENT']

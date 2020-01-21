@@ -3,11 +3,9 @@
 module Sinatra
   module Api
     module Tickets
-      SERIALIZER_MAPPING = {
-        'Models::Ticket': Serializers::Ticket
-      }.freeze
-
       def self.registered(app) # rubocop:disable Metrics/MethodLength
+        app.helpers TicketsHelper
+
         app.namespace '/tickets' do
           post do
             ticket = UseCases::Tickets::Create.new.call
@@ -19,8 +17,11 @@ module Sinatra
             render_ticket(ticket)
           end
 
-          def render_ticket(ticket, mapping: SERIALIZER_MAPPING)
-            MultiJson.dump(renderer.render(ticket, class: mapping))
+          post '/:ticket_id/payments' do |ticket_id|
+            UseCases::Tickets::Payments::Create
+              .new(ticket_id, body: parsed_body).call
+
+            201
           end
         end
       end

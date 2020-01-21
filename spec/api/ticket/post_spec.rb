@@ -8,11 +8,8 @@ RSpec.describe 'POST /api/ticket', :clear_tickets, :with_frozen_time do
   subject { post '/api/tickets', {}, headers }
 
   before do
-    Timecop.freeze(frozen_time)
     allow(SecureRandom).to receive(:hex).and_return(id)
   end
-
-  after { Timecop.return }
 
   let(:headers) { {} }
   let(:id) { '5b192f70a7ab640d' }

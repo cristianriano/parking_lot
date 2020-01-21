@@ -12,7 +12,7 @@ module UseCases
       def build_ticket
         Models::Ticket.new(
           id: SecureRandom.hex(8),
-          created_at: Time.now.utc
+          created_at: Time.now
         )
       end
 
