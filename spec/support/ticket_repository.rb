@@ -6,7 +6,7 @@ module Repositories
       def clear
         return unless %w[test development].include? ENV['ENVIRONMENT']
 
-        conn.truncate
+        conn.delete
       end
 
       def count

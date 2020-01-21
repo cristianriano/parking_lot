@@ -6,7 +6,8 @@ module Models
 
     attribute  :id,          Types::TicketID
     attribute  :created_at,  Types::Strict::Time
-    attribute? :checkout_at, Types::Strict::Time.optional
+    attribute? :updated_at,  Types::Strict::Time.optional
+    attribute? :state,       Types::TicketStates
 
     def price
       hours_elapsed.ceil * HOUR_FEE

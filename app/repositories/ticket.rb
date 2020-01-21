@@ -6,6 +6,7 @@ module Repositories
   class Ticket
     class << self
       def insert(ticket)
+        ticket = add_defaults(ticket)
         conn.insert(ticket.to_h)
         ticket
       rescue Sequel::UniqueConstraintViolation
@@ -20,6 +21,15 @@ module Repositories
       end
 
       private
+
+      def add_defaults(ticket)
+        now = Time.now
+        ticket.new(
+          created_at: now,
+          updated_at: now,
+          state: 'open'
+        )
+      end
 
       def conn
         @conn ||= Connections::Mysql.connection[:tickets]

@@ -3,11 +3,9 @@
 module Sinatra
   module Api
     module Tickets
-      SERIALIZER_MAPPING = {
-        'Models::Ticket': Serializers::Ticket
-      }.freeze
-
       def self.registered(app) # rubocop:disable Metrics/MethodLength
+        app.helpers TicketsHelper
+
         app.namespace '/tickets' do
           post do
             ticket = UseCases::Tickets::Create.new.call
