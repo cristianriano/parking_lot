@@ -62,7 +62,7 @@ RSpec.describe 'POST /api/ticket/:id/payments', :clear_db, :with_frozen_time do
     let(:fetch_price) do
       proc do
         body = get("api/tickets/#{id}").body
-        JSON.parse(body).dig("data", "attributes", "price")
+        JSON.parse(body).dig('data', 'attributes', 'price')
       end
     end
 

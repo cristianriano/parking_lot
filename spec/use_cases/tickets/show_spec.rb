@@ -24,7 +24,7 @@ RSpec.describe UseCases::Tickets::Show do
       expect(repo).to receive(:find).with(id).and_return(ticket)
       expect(UseCases::Tickets::CalculatePrice)
         .to receive(:new).with(ticket)
-        .and_call_original
+                         .and_call_original
       subject
     end
   end

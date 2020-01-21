@@ -10,6 +10,6 @@ module Types
     format: /^[0-9a-fA-F]{16}$/
   )
 
-  PaymentMethods = Strict::String.enum("credit_card", "debit_card", "cash")
-  TicketStates = Strict::String.enum("paid", "open", "closed")
+  PaymentMethods = Strict::String.enum('credit_card', 'debit_card', 'cash')
+  TicketStates = Strict::String.enum('paid', 'open', 'closed')
 end

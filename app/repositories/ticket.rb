@@ -24,7 +24,7 @@ module Repositories
         ensure_present!(changeset)
 
         changeset[:updated_at] = Time.now
-        ticket = find(id)
+        find(id)
         conn.filter(id: id).update(**changeset)
         find(id)
       end
@@ -41,7 +41,8 @@ module Repositories
       end
 
       def ensure_present!(args)
-        return if args && args.any?
+        return if args&.any?
+
         raise ArgumentError, args
       end
 

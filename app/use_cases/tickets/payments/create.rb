@@ -32,7 +32,7 @@ module UseCases
         end
 
         def extract_payment_method
-          body.dig("payment", "method")
+          body.dig('payment', 'method')
         end
 
         def ticket
