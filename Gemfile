@@ -6,8 +6,8 @@ source 'https://rubygems.org'
 gem 'puma', '~> 4.3'
 gem 'racksh', '~> 1.0'
 gem 'rake', '~> 13.0'
-gem 'sinatra', '~> 2.0'
-gem 'sinatra-contrib', '~> 2.0'
+gem 'sinatra', '~> 2.2'
+gem 'sinatra-contrib', '~> 2.2'
 
 # Configuration
 gem 'dotenv', '~> 2.7'
